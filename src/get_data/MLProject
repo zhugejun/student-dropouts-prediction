@@ -1,0 +1,5 @@
+name: get_raw_data
+conda_env: conda.yml
+entry_points:
+  main:
+    command: "python run.py"

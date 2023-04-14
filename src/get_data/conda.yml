@@ -1,0 +1,13 @@
+name: get_data
+
+channels:
+  - conda-forge
+
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+    - mlflow>=1.0
+    - SQLAlchemy==2.0.9
+    - pyodbc==4.0.38
+    - pandas==2.0.0
