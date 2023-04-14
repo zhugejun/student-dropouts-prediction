@@ -7,7 +7,7 @@ import logging
 import os
 
 
-data_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "../data/raw"))
+data_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../data/raw"))
 
 logging.basicConfig(level=logging.DEBUG, format="%(asctime)-15s %(message)s")
 logger = logging.getLogger()
