@@ -26,6 +26,18 @@
 - Average precentage of absences
 - TODO: data from Canvas
 
+## Data
+
+### Get Raw Data
+
+Simply run the following command:
+
+```bash
+mlflow run ./src/data/get_data.py
+```
+
+The data will be saved in `data/raw/` folder.
+
 ## Model
 
 - Decision Tree
