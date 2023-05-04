@@ -4,3 +4,5 @@ data/*.csv
 
 __pycache__/
 *.py[cod]
+
+mlruns/
