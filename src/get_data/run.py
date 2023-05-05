@@ -9,7 +9,7 @@ import os
 
 data_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../data/raw"))
 
-logging.basicConfig(level=logging.DEBUG, format="%(asctime)-15s %(message)s")
+logging.basicConfig(level=logging.DEBUG, format="%(asctime)-15s %(message)s", datefmt="%m/%d/%Y %I:%M:%S %p")
 logger = logging.getLogger()
 
 logger.addHandler(logging.FileHandler('get_data.log', 'w'))
@@ -105,7 +105,7 @@ def get_course_history():
         , s.StudentID
         , sro.Department, sro.CourseID, sro.Section, sro.Credits
         , Grade
-        , year(sro.StartDate) - year(s.BirthDate) as Age
+        , cast(right(TextTerm, 4) as int) - year(s.BirthDate) as Age
         , case when fp.DisplayText like '%Full%' then 1 else 0 end as IsFullTime
     FROM SRAcademic sra
     join SROffer sro on sra.SROfferID = sro.SROfferID
@@ -118,8 +118,10 @@ def get_course_history():
         and len(Term) = 4
         and sro.StartDate <= GETDATE()         -- only include the courses have started
         and s.StudentID in (select StudentID from sids)-- student list from above
+        and right(Term, 1) in ('Q', 'C')  
     """
     df = get_data_from_cams(cte(s))
+    df = df.loc[df.Age >= 14]
     df.to_csv(os.path.join(data_dir, "course_history.csv"), index=False)
     return df
 
