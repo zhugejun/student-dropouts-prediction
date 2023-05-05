@@ -204,7 +204,7 @@ def get_last_term_gpa():
     order by s.StudentID, tc.Term
     """
     df = get_data_from_cams(cte(s))
-    df.to_csv(os.path.join(data_dir, "gpa.csv"), index=False)
+    df.to_csv(os.path.join(data_dir, "gpa_history.csv"), index=False)
     return df
 
 
