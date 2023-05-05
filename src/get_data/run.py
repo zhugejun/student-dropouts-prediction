@@ -12,6 +12,8 @@ data_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../data/r
 logging.basicConfig(level=logging.DEBUG, format="%(asctime)-15s %(message)s")
 logger = logging.getLogger()
 
+logger.addHandler(logging.FileHandler('get_data.log', 'w'))
+
 
 def cte(rest_of_query):
     s = f"""
@@ -76,6 +78,7 @@ def get_demographics():
 
 
 def get_terms():
+    logger.info("Getting terms data...")
 
     s = f"""
     select distinct left(Section, 1) as WeekType
