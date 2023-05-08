@@ -33,10 +33,21 @@
 Simply run the following command:
 
 ```bash
-mlflow run ./src/data/get_data.py
+mlflow run ./src/data/get_data/
 ```
 
 The data will be saved in `data/raw/` folder.
+
+
+### Preprocess Data
+
+Run the following command:
+
+```bash
+mlflow run ./src/preprocess/
+```
+
+The preprocessed data will be saved in `data/processed/` folder.
 
 ## Model
 
