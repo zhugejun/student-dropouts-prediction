@@ -41,13 +41,13 @@ The data will be saved in `data/raw/` folder.
 
 ### Preprocess Data
 
-Run the following command:
+To get the preprocessed data for week 10, simply run the following command:
 
 ```bash
-mlflow run ./src/preprocess/
+mlflow run ./src/preprocess/ -P week_number=10
 ```
 
-The preprocessed data will be saved in `data/processed/` folder.
+The preprocessed data named `cleaned-10.csv` will be saved in `data/processed/` folder.
 
 ## Model
 
