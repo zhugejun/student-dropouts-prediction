@@ -130,7 +130,7 @@ def go(args):
     cleaned = cleaned.merge(demo, on="StudentID")
     cleaned = cleaned.merge(targets, on="StudentID")
     
-    cleaned.to_csv("../../data/processed/cleaned.csv", index=False)
+    cleaned.to_csv(f"../../data/processed/cleaned-{args.week_number}.csv", index=False)
     
     return cleaned
 
