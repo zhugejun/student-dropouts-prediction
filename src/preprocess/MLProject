@@ -1,0 +1,10 @@
+name: clean_data
+conda_env: conda.yml
+entry_points:
+  main:
+    parameters:
+      week_number:
+        type: int
+        default: 1
+    
+    command: "python run.py --week_number {week_number}"
