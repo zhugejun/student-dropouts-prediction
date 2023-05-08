@@ -1,0 +1,12 @@
+name: preprocess_data
+
+channels:
+  - conda-forge
+
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+    - mlflow>=1.0
+    - pandas==2.0.0
+    - numpy==1.23.3
