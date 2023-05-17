@@ -128,7 +128,7 @@ def go(args):
     # TODO: verfity age >= 14
     # TODO: check missing values for each column
     cleaned = cleaned.merge(demo, on="StudentID")
-    cleaned = cleaned.merge(targets, on="StudentID")
+    cleaned = cleaned.merge(targets, on=["StudentID", "TermCode"])
     
     cleaned.to_csv(f"../../data/processed/cleaned-{args.week_number}.csv", index=False)
     
