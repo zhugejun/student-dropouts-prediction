@@ -34,7 +34,7 @@
 Simply run the following command:
 
 ```bash
-mlflow run ./src/data/get_data/
+mlflow run ./src/get_data/
 ```
 
 The data will be saved in `data/raw/` folder.
