@@ -22,7 +22,7 @@
 - Past dropout rate
 - Dropout history for the last 3 semesters
 - High school GPA if a student is new to college
-- Last cumulative GPA
+- ~~Last cumulative GPA~~
 - Average precentage of absences
 - TODO: data from Canvas
 

@@ -195,7 +195,7 @@ def get_last_term_gpa():
 
     s = """
     select s.StudentID, Term as TermCode
-        , LAG(TermGPA, 1, 0) over (partition by StudentID order by Term) as TermGPALast
+        --, LAG(TermGPA, 1, 0) over (partition by StudentID order by Term) as TermGPALast
         , LAG(CumGPA, 1, 0) over (partition by StudentID order by Term) as CumGPALast
     from CAMS_StudentCumulativeGPA_View g
     join Student s on g.StudentUID = s.StudentUID
