@@ -10,16 +10,24 @@ logging.basicConfig(format='%(asctime)s - %(levelname)s - %(message)s', datefmt=
 logger = logging.getLogger(__name__)
 logger.addHandler(logging.FileHandler('preprocess.log', 'w'))
 
-def is_dev_course(section):
-    return 1 if str(section).startswith("0") else 0
+def is_dev_course(course_id):
+    """Returns 1 if the course is a development course, 0 otherwise
+
+    Args:
+        course_id (str): 1342, 0120, etc.
+
+    Returns:
+        int: 1 if the course is a development course, 0 otherwise
+    """
+    return 1 if str(course_id).startswith("0") else 0
 
 
 def is_nt_course(section):
-    return 1 if 'NT' in str(section) else 0
+    return int('NT' in str(section))
 
 
 def is_w_grade(grade):
-    return 1 if grade == 'W' else 0
+    return int(grade == 'W')
 
 
 def go(args):
@@ -27,7 +35,7 @@ def go(args):
     logger.info(">>>>>> Processing course data <<<<<<")
     crs = pd.read_csv("../../data/raw/course_history.csv")
     crs["Course"] = crs["Department"] + crs["CourseID"]
-    crs["IsDev"] = [is_dev_course(sec) for sec in crs.Section]
+    crs["IsDev"] = [is_dev_course(cid) for cid in crs.CourseID]
     crs["IsInternet"] = [is_nt_course(sec) for sec in crs.Section]
     crs["IsW"] = [is_w_grade(grade) for grade in crs.Grade]
     
@@ -129,6 +137,9 @@ def go(args):
     # TODO: check missing values for each column
     cleaned = cleaned.merge(demo, on="StudentID")
     cleaned = cleaned.merge(targets, on=["StudentID", "TermCode"])
+
+    # deduplicate
+    cleaned.drop_duplicates(inplace=True)
     
     cleaned.to_csv(f"../../data/processed/cleaned-{args.week_number}.csv", index=False)
     
