@@ -50,6 +50,18 @@ mlflow run ./src/preprocess/ -P week_number=10
 
 The preprocessed data named `cleaned-10.csv` will be saved in `data/processed/` folder.
 
+
+### EDA
+
+To get an overview of what the data look like.
+
+Run the following command
+
+```bash
+mlflow run ./src/eda/
+```
+
+
 ## Model
 
 - Decision Tree
