@@ -1,2 +1,2 @@
-CURR_TERM = "Spring 2023"
-VAL_TERM = "Fall 2022"
+CURR_TERM = "Fall 2023"
+VAL_TERM = "Spring 2023"
