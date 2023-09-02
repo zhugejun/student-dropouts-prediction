@@ -66,3 +66,9 @@ mlflow run ./src/eda/
 
 - Decision Tree
 - Gradient Boosting Decision Tree
+
+Run the following command to train the XGBoost model and make predictions.
+
+```bash
+mlflow run ./src/model/
+```
