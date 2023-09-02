@@ -1,0 +1,2 @@
+PREV_TERM = "B23C"
+CURR_TERM = "B23Q"
